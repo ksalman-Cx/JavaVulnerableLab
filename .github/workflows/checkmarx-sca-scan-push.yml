@@ -27,17 +27,21 @@ jobs:
     - name: Checkmarx CxFlow Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4 # GitHub Action version
       with:
-        project: ${{ secrets.CHECKMARX_PROJECT }}  # <-- Insert Checkmarx CxSCA Project Name
+        # project: ${{ secrets.CHECKMARX_PROJECT }}  # <-- Insert Checkmarx CxSCA Project Name
+        project: JavaVulnerableLab CxFlow GH Action
         sca_api_url: https://api.scacheckmarx.com
         sca_app_url: https://sca.scacheckmarx.com
         sca_access_control_url: https://platform.checkmarx.net
-        sca_tenant: <SCATenant>  # <-- Insert Checkmarx CxSCA Tenant
-        sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME }} # To be stored in GitHub Secrets.
-        sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD }} # To be stored in GitHub Secrets.
+        sca_tenant: tg-demo-sca  # <-- Insert Checkmarx CxSCA Tenant
+        
+        #sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME }} # To be stored in GitHub Secrets.
+        #sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD }} # To be stored in GitHub Secrets.
+        sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME_TG }} # To be stored in GitHub Secrets.
+        sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD_TG }} # To be stored in GitHub Secrets.
         break_build: false
         scanners: sca
         bug_tracker: Sarif
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-url="<GitHubRepoUrl>" --cx-flow.filterSeverity --cx-flow.filterCategory
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-url="https://github.com/CxTomer/JavaVulnerableLab" --cx-flow.filterSeverity --cx-flow.filterCategory
 
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
