@@ -42,7 +42,7 @@ jobs:
         #checkmarx_username: ${{ secrets.CHECKMARX_SAST_USER_TEAM }} # To be stored in GitHub Secrets.
         
         #checkmarx_url: https://cxrw.ngrok.io
-        checkmarx_url: http://172.35.1.24/
+        checkmarx_url: http://5320-54-165-194-36.ngrok.io #http://172.35.1.24/
         #checkmarx_url: https://cxprivatecloud.checkmarx.net/
         
         #checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
