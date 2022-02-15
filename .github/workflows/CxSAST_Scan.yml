@@ -38,21 +38,21 @@ jobs:
         #team: CxServer\SP\America\gmail.com - 1	  # Public team SAST
         
         #checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
-        #checkmarx_username: ${{ secrets.CHECKMARX_SAST_USER_TG }} # To be stored in GitHub Secrets.
+        checkmarx_username: ${{ secrets.CHECKMARX_SAST_USER_TG }} # To be stored in GitHub Secrets.
         #checkmarx_username: ${{ secrets.CHECKMARX_SAST_USER_TEAM }} # To be stored in GitHub Secrets.
-        checkmarx_username: tgolani
+        #checkmarx_username: tgolani
         
         #checkmarx_url: https://cxrw.ngrok.io
         checkmarx_url: http://5320-54-165-194-36.ngrok.io #http://172.35.1.24/
         #checkmarx_url: https://cxprivatecloud.checkmarx.net/
         
         #checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
-        #checkmarx_password: ${{ secrets.CHECKMARX_SAST_PASSWORD_TG }} # To be stored in GitHub Secrets.
+        checkmarx_password: ${{ secrets.CHECKMARX_SAST_PASSWORD_TG }} # To be stored in GitHub Secrets.
         #checkmarx_password: ${{ secrets.CHECKMARX_SAST_PASSWORD_TEAM }} # To be stored in GitHub Secrets.
-        checkmarx_password: Check123!
+        #checkmarx_password: Check123!
         
-        #checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
-        checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C
+        checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
+        #checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C
         
         sca_api_url: https://api.scacheckmarx.com
         sca_app_url: https://sca.scacheckmarx.com
