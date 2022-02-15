@@ -34,7 +34,7 @@ jobs:
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
       with:
         project: Java Vulnerable Lab - RW Demo GitHub Action # <-- Insert Checkmarx SAST Project Name
-        team: /CxServer     #/CxServer/Dev
+        team: /CxServer     # /CxServer/Dev
         
         #checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
         checkmarx_username: ${{ secrets.CHECKMARX_SAST_USER_TG }} # To be stored in GitHub Secrets.
