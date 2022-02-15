@@ -85,4 +85,3 @@ jobs:
         #params: --sca.includeSources=true --sca.enabledZipScan=true --sca.filter-score=8.0 --sca.filter-severity=HIGH --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
         
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
-
