@@ -70,9 +70,63 @@ jobs:
         break_build: false
         scanners: sast   #sast, sca
         preset: high and medium
-        bug_tracker: GitHub
+        bug_tracker: Jira #GitHub
         incremental: false
+        
+
         
         # --bug-tracker=jira --config=cx.config --jira.url=https://cxtg.atlassian.net --jira.username=my.checkmarx@gmail.com --jira.token=xjCA91tUk9KzJe3tlWu80CEE
         #params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        #params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        
+        
+        
+jira:
+   url: https://cxtg.atlassian.net/
+   username: my.checkmarx@gmail.com
+   token: xjCA91tUk9KzJe3tlWu80CEE
+   project: CxDemo
+   issue-type: Application Security Bug
+   label-prefix: CxFlow   # default CX
+   priorities:
+      High: High
+      Medium: Medium
+      Low: Low
+      Informational: Lowest
+   pen-transition: In Review
+   close-transition: Done
+   open-status:
+      - To Do
+      - In Progress
+      - In Review
+   closed-status:
+      - Done
+   sast-issue-summary-format: "[VULNERABILITY] in [PROJECT] with severity [SEVERITY] @ [FILENAME]"
+   sast-issue-summary-branch-format: "[VULNERABILITY] in [PROJECT] with severity [SEVERITY] @ [FILENAME][[BRANCH]]"
+   fields:
+#    - type: cx #[ cx | static | result ]
+#      name: Platform # cx custom field name | cwe, category, severity, application, *project*, repo-name, branch, repo-url, namespace, recommendations, loc, site, issueLink, filename, language
+#      jira-field-name: Application
+#      jira-field-type: label #[ security | text | label | single-select | multi-select ]
+     - type: result
+       name: application
+       jira-field-name: Application
+       jira-field-type: label
+     - type: result
+       name: cve
+       jira-field-name: CVEs
+       jira-field-type: label
+     - type: result
+       name: cwe
+       jira-field-name: CWEs
+       jira-field-type: label
+     - type: result
+       name: category
+       jira-field-name: Category
+     - type: result
+       name: loc
+       jira-field-name: LOC
+       jira-field-type: label
+       #jira-default-value: XXXXX
+        
+        
