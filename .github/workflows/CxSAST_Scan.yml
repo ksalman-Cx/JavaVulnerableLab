@@ -34,20 +34,38 @@ jobs:
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
       with:
         project: Java Vulnerable Lab - RW Demo GitHub Action # <-- Insert Checkmarx SAST Project Name
-        team: /CxServer/Dev
-        checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
-        checkmarx_url: https://cxrw.ngrok.io
-        checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
+        team: /CxServer     #/CxServer/Dev
+        
+        #checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
+        checkmarx_username: ${{ secrets.CHECKMARX_SAST_USER_TG }} # To be stored in GitHub Secrets.
+                
+        #checkmarx_url: https://cxrw.ngrok.io
+        checkmarx_url: 172.35.1.24
+        
+        #checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
+        checkmarx_password: ${{ secrets.CHECKMARX_SAST_PASSWORD_TG }} # To be stored in GitHub Secrets.
+        
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
+        
         sca_api_url: https://api.scacheckmarx.com
         sca_app_url: https://sca.scacheckmarx.com
         sca_access_control_url: https://platform.checkmarx.net
-        sca_tenant: SCA-Champions  # <-- Insert Checkmarx CxSCA Tenant
-        sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME }} # To be stored in GitHub Secrets.
-        sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD }} # To be stored in GitHub Secrets.
+        
+        #sca_tenant: SCA-Champions  # <-- Insert Checkmarx CxSCA Tenant
+        sca_tenant: tg-demo-sca  # <-- Insert Checkmarx CxSCA Tenant
+        
+        #sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME }} # To be stored in GitHub Secrets.
+        sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME_TG }} # To be stored in GitHub Secrets.
+        
+        #sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD }} # To be stored in GitHub Secrets.
+        sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD_TG }} # To be stored in GitHub Secrets.
+
         break_build: false
         scanners: sast, sca
         preset: high and medium
         bug_tracker: GitHub
         incremental: false
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
+        
+        #params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=https://cxtg.atlassian.net --jira.username=my.checkmarx@gmail.com
+ --jira.token=xjCA91tUk9KzJe3tlWu80CEE
