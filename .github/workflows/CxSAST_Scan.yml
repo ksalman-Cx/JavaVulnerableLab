@@ -43,7 +43,7 @@ jobs:
         #checkmarx_username: tgolani
         
         #checkmarx_url: https://cxrw.ngrok.io
-        checkmarx_url: http://5320-54-165-194-36.ngrok.io #http://172.35.1.24/
+        checkmarx_url: http://a583-3-86-25-196.ngrok.io #http://172.35.1.24/
         #checkmarx_url: https://cxprivatecloud.checkmarx.net/
         
         #checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
@@ -70,63 +70,21 @@ jobs:
         break_build: false
         scanners: sast   #sast, sca
         preset: high and medium
-        bug_tracker: Jira #GitHub
         incremental: false
         
-
+        #bug_tracker: Jira #GitHub
+        bug_tracker: Jira
         
-        # --bug-tracker=jira --config=cx.config --jira.url=https://cxtg.atlassian.net --jira.username=my.checkmarx@gmail.com --jira.token=xjCA91tUk9KzJe3tlWu80CEE
+        #Filter on Severity
+        #params: --sca.filter-severity=HIGH --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        
+        #filter on score
+        #params: --sca.filter-score=8.0 --sca.filter-severity=HIGH --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        
+        #Include Source
+        #params: --sca.includeSources=true --sca.enabledZipScan=true --sca.filter-score=8.0 --sca.filter-severity=HIGH --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        
         #params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
-        #params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
-        
-        
-        
-jira:
-   url: https://cxtg.atlassian.net/
-   username: my.checkmarx@gmail.com
-   token: xjCA91tUk9KzJe3tlWu80CEE
-   project: CxDemo
-   issue-type: Application Security Bug
-   label-prefix: CxFlow   # default CX
-   priorities:
-      High: High
-      Medium: Medium
-      Low: Low
-      Informational: Lowest
-   pen-transition: In Review
-   close-transition: Done
-   open-status:
-      - To Do
-      - In Progress
-      - In Review
-   closed-status:
-      - Done
-   sast-issue-summary-format: "[VULNERABILITY] in [PROJECT] with severity [SEVERITY] @ [FILENAME]"
-   sast-issue-summary-branch-format: "[VULNERABILITY] in [PROJECT] with severity [SEVERITY] @ [FILENAME][[BRANCH]]"
-   fields:
-#    - type: cx #[ cx | static | result ]
-#      name: Platform # cx custom field name | cwe, category, severity, application, *project*, repo-name, branch, repo-url, namespace, recommendations, loc, site, issueLink, filename, language
-#      jira-field-name: Application
-#      jira-field-type: label #[ security | text | label | single-select | multi-select ]
-     - type: result
-       name: application
-       jira-field-name: Application
-       jira-field-type: label
-     - type: result
-       name: cve
-       jira-field-name: CVEs
-       jira-field-type: label
-     - type: result
-       name: cwe
-       jira-field-name: CWEs
-       jira-field-type: label
-     - type: result
-       name: category
-       jira-field-name: Category
-     - type: result
-       name: loc
-       jira-field-name: LOC
-       jira-field-type: label
-       #jira-default-value: XXXXX
-        
+        #params:  --config=cx.config  --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}} --sca.team-for-new-projects='/CxServer/SCA-PM/Champions/jbrots'  --sca.filter-score=8.0 --sca.filter-severity=HIGH --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        params:  --config=cx.config  --jira.url=https://cxtg.atlassian.net --jira.username=my.checkmarx@gmail.com --jira.token=xjCA91tUk9KzJe3tlWu80CEE  --sca.filter-score=8.0 --sca.filter-severity=HIGH --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
         
