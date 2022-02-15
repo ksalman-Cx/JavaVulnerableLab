@@ -70,5 +70,6 @@ jobs:
         bug_tracker: GitHub
         incremental: false
         
+        # --bug-tracker=jira --config=cx.config --jira.url=https://cxtg.atlassian.net --jira.username=my.checkmarx@gmail.com --jira.token=xjCA91tUk9KzJe3tlWu80CEE
         #params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=https://cxtg.atlassian.net --jira.username=my.checkmarx@gmail.com --jira.token=xjCA91tUk9KzJe3tlWu80CEE
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
