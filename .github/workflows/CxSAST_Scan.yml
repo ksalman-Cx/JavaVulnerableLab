@@ -18,21 +18,31 @@
 #
 # For full documentation, including a list of all inputs, please refer to the README https://github.com/checkmarx-ts/checkmarx-cxflow-github-action
 
+# This is a basic workflow to help you get started with Actions
 name: Checkmarx SAST Scan
 on:
   push:
     branches:
       - master
     
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4
+      
       with:
+        scanners: sast   #sast, sca
+        
         project: Java Vulnerable Lab - TG Demo GitHub Action # <-- Insert Checkmarx SAST Project Name
         team: /CxServer     # /CxServer/Dev
         #team: CxServer\SP\America\gmail.com - 1	  # Public team SAST
@@ -68,7 +78,7 @@ jobs:
         sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD_TG }} # To be stored in GitHub Secrets.
 
         break_build: false
-        scanners: sast   #sast, sca
+
         preset: high and medium
         incremental: false
         
