@@ -43,7 +43,7 @@ jobs:
         #checkmarx_username: tgolani
         
         #checkmarx_url: https://cxrw.ngrok.io
-        checkmarx_url: http://a583-3-86-25-196.ngrok.io #http://172.35.1.24/
+        checkmarx_url:  http://bd86-34-239-103-131.ngrok.io #http://172.35.1.24/
         #checkmarx_url: https://cxprivatecloud.checkmarx.net/
         
         #checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
