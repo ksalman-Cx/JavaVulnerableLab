@@ -44,7 +44,7 @@ jobs:
         scanners: sast   #sast, sca
         
         project: Java Vulnerable Lab - TG Demo GitHub Action # <-- Insert Checkmarx SAST Project Name
-        team: /CxServer     # /CxServer/Dev
+        team: /CxServer
         #team: CxServer\SP\America\gmail.com - 1	  # Public team SAST
         
         #checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
